@@ -31,18 +31,18 @@ int main()
     int choice;
 
     do {
-        cout << "====== МЕНЮ ЛР4 ======" << endl;
-        cout << "1 - Proc14: правий циклiчний зсув (двi трiйки чисел)" << endl;
-        cout << "2 - Proc43: перевiрка, чи можна утворити трикутник (3 набори)" << endl;
-        cout << "3 - Integer13 (з ЛР2): перенос першої цифри тризначного числа в кiнець" << endl;
-        cout << "0 - Вихiд" << endl;
-        cout << "Ваш вибiр: ";
+        cout << "====== LAB4 MENU ======" << endl;
+        cout << "1 - Proc14: right cyclic shift (two triples of numbers)" << endl;
+        cout << "2 - Proc43: check if a triangle can be formed (3 sets)" << endl;
+        cout << "3 - Integer13 (from Lab2): move the first digit of a three-digit number to the end" << endl;
+        cout << "0 - Exit" << endl;
+        cout << "Your choice: ";
         cin >> choice;
 
         if (cin.fail()) {
             cin.clear();
             cin.ignore(1000, '\n');
-            cout << "Помилка вводу! Спробуйте ще раз." << endl << endl;
+            cout << "Input error! Try again." << endl << endl;
             continue;
         }
 
@@ -59,10 +59,10 @@ int main()
             task_Integer13();
             break;
         case 0:
-            cout << "Завершення роботи програми." << endl;
+            cout << "Program finished." << endl;
             break;
         default:
-            cout << "Невiрний пункт меню. Спробуйте ще раз." << endl;
+            cout << "Invalid menu item. Try again." << endl;
         }
 
         cout << endl;
@@ -75,12 +75,12 @@ int main()
 
 // ================= РЕАЛІЗАЦІЇ ФУНКЦІЙ =================
 //
-// ----------- Proc14: ShiftRight3 ---------------------
+ // ----------- Proc14: ShiftRight3 ---------------------
 
 // Введення трьох чисел з перевіркою діапазону [-100; 100]
 bool inputTriple(double &a, double &b, double &c)
 {
-    cout << "Введiть три числа (в дiапазонi [-100; 100]):" << endl;
+    cout << "Enter three numbers in range [-100; 100]:" << endl;
     cout << "A = ";
     cin >> a;
     cout << "B = ";
@@ -91,12 +91,12 @@ bool inputTriple(double &a, double &b, double &c)
     if (cin.fail()) {
         cin.clear();
         cin.ignore(1000, '\n');
-        cout << "Помилка: введено нечислове значення!" << endl;
+        cout << "Error: non-numeric value entered!" << endl;
         return false;
     }
 
     if (a < -100 || a > 100 || b < -100 || b > 100 || c < -100 || c > 100) {
-        cout << "Помилка: усi числа повиннi належати дiапазону [-100; 100]." << endl;
+        cout << "Error: all numbers must belong to range [-100; 100]." << endl;
         return false;
     }
 
@@ -124,34 +124,34 @@ void task_Proc14()
     double A1, B1, C1;
     double A2, B2, C2;
 
-    cout << "--- Proc14: правий циклiчний зсув для двох трiйок ---" << endl;
+    cout << "--- Proc14: right cyclic shift for two triples ---" << endl;
 
-    cout << "=== Перший набiр (A1, B1, C1) ===" << endl;
+    cout << "=== First set (A1, B1, C1) ===" << endl;
     if (!inputTriple(A1, B1, C1)) {
-        cout << "Обчислення не виконуються через помилку вводу." << endl;
+        cout << "Calculations are not performed due to input error." << endl;
         return;
     }
 
-    cout << "=== Другий набiр (A2, B2, C2) ===" << endl;
+    cout << "=== Second set (A2, B2, C2) ===" << endl;
     if (!inputTriple(A2, B2, C2)) {
-        cout << "Обчислення не виконуються через помилку вводу." << endl;
+        cout << "Calculations are not performed due to input error." << endl;
         return;
     }
 
-    cout << endl << "Початковi значення:" << endl;
-    cout << "Набiр 1: ";
+    cout << endl << "Initial values:" << endl;
+    cout << "Set 1: ";
     outputTriple(A1, B1, C1);
-    cout << "Набiр 2: ";
+    cout << "Set 2: ";
     outputTriple(A2, B2, C2);
 
     // Виконуємо правий циклічний зсув для кожної трійки
     ShiftRight3(A1, B1, C1);
     ShiftRight3(A2, B2, C2);
 
-    cout << endl << "Пiсля правого циклiчного зсуву:" << endl;
-    cout << "Набiр 1: ";
+    cout << endl << "After right cyclic shift:" << endl;
+    cout << "Set 1: ";
     outputTriple(A1, B1, C1);
-    cout << "Набiр 2: ";
+    cout << "Set 2: ";
     outputTriple(A2, B2, C2);
 }
 
@@ -161,7 +161,7 @@ void task_Proc14()
 // Введення трьох додатних чисел (0; 100]
 bool inputPositiveTriple(double &a, double &b, double &c)
 {
-    cout << "Введiть три додатнi числа (0 < x <= 100):" << endl;
+    cout << "Enter three positive numbers (0 < x <= 100):" << endl;
     cout << "a = ";
     cin >> a;
     cout << "b = ";
@@ -172,13 +172,13 @@ bool inputPositiveTriple(double &a, double &b, double &c)
     if (cin.fail()) {
         cin.clear();
         cin.ignore(1000, '\n');
-        cout << "Помилка: введено нечислове значення!" << endl;
+        cout << "Error: non-numeric value entered!" << endl;
         return false;
     }
 
     // Додатність + обмеження діапазону
     if (a <= 0 || a > 100 || b <= 0 || b > 100 || c <= 0 || c > 100) {
-        cout << "Помилка: усi числа повиннi бути додатнiми i не бiльшими за 100." << endl;
+        cout << "Error: all numbers must be positive and not greater than 100." << endl;
         return false;
     }
 
@@ -195,11 +195,11 @@ bool IsTriangle(double a, double b, double c)
 // Виведення результату
 void printTriangleResult(double a, double b, double c)
 {
-    cout << "Сторони: a = " << a << ", b = " << b << ", c = " << c << " -> ";
+    cout << "Sides: a = " << a << ", b = " << b << ", c = " << c << " -> ";
     if (IsTriangle(a, b, c))
-        cout << "трикутник iснує." << endl;
+        cout << "triangle exists." << endl;
     else
-        cout << "утворити трикутник НЕ можна." << endl;
+        cout << "cannot form a triangle." << endl;
 }
 
 // Задача Proc43: перевірити 3 набори чисел
@@ -209,27 +209,27 @@ void task_Proc43()
     double a2, b2, c2;
     double a3, b3, c3;
 
-    cout << "--- Proc43: перевiрка, чи можна утворити трикутник ---" << endl;
+    cout << "--- Proc43: check if a triangle can be formed ---" << endl;
 
-    cout << "=== Набiр 1 ===" << endl;
+    cout << "=== Set 1 ===" << endl;
     if (!inputPositiveTriple(a1, b1, c1)) {
-        cout << "Обчислення не виконуються через помилку вводу." << endl;
+        cout << "Calculations are not performed due to input error." << endl;
         return;
     }
 
-    cout << "=== Набiр 2 ===" << endl;
+    cout << "=== Set 2 ===" << endl;
     if (!inputPositiveTriple(a2, b2, c2)) {
-        cout << "Обчислення не виконуються через помилку вводу." << endl;
+        cout << "Calculations are not performed due to input error." << endl;
         return;
     }
 
-    cout << "=== Набiр 3 ===" << endl;
+    cout << "=== Set 3 ===" << endl;
     if (!inputPositiveTriple(a3, b3, c3)) {
-        cout << "Обчислення не виконуються через помилку вводу." << endl;
+        cout << "Calculations are not performed due to input error." << endl;
         return;
     }
 
-    cout << endl << "Результати перевiрки:" << endl;
+    cout << endl << "Check results:" << endl;
     printTriangleResult(a1, b1, c1);
     printTriangleResult(a2, b2, c2);
     printTriangleResult(a3, b3, c3);
@@ -244,18 +244,18 @@ void task_Proc43()
 // введення n з перевіркою
 bool in_n(int &n)
 {
-    cout << "Integer13. Введiть тризначне додатнє число n (100..999): ";
+    cout << "Integer13. Enter a three-digit positive number n (100..999): ";
     cin >> n;
 
     if (cin.fail()) {
         cin.clear();
         cin.ignore(1000, '\n');
-        cout << "Помилка: введено нецiле число." << endl;
+        cout << "Error: non-integer value entered." << endl;
         return false;
     }
 
     if (n < 100 || n > 999) {
-        cout << "Помилка: n повинно бути тризначним додатнiм числом." << endl;
+        cout << "Error: n must be a three-digit positive number." << endl;
         return false;
     }
 
@@ -272,8 +272,8 @@ int calc_Integer13(int n)
 // виведення результату
 void out_res_Int13(int n, int res)
 {
-    cout << "Початкове n = " << n
-         << ", пiсля перенесення першої цифри в кiнець: " << res << endl;
+    cout << "Initial n = " << n
+         << ", after moving the first digit to the end: " << res << endl;
 }
 
 // повна задача Integer13 з використанням трьох функцій
@@ -281,7 +281,7 @@ void task_Integer13()
 {
     int n;
     if (!in_n(n)) {
-        cout << "Обчислення не виконуються через некоректнi данi." << endl;
+        cout << "Calculations are not performed due to invalid data." << endl;
         return;
     }
 
